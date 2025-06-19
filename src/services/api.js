@@ -16,7 +16,7 @@ function getHeaders(includeAuth = true) {
 }
 
 function get(url, param, includeAuth = true) {
-  const fullURL = `${baseURL}${url}/${param}`;
+  const fullURL = `${baseURL}${url}${param ? `/${param}` : ""}`;
 
   return fetch(fullURL, {
     method: "GET",
@@ -44,8 +44,8 @@ function put(url, data = {}, includeAuth = true) {
   }).then(handleResponse);
 }
 
-function del(url, includeAuth = true) {
-  const fullURL = `${baseURL}${url}`;
+function del(url, param, includeAuth = true) {
+  const fullURL = `${baseURL}${url}/${param}`;
 
   return fetch(fullURL, {
     method: "DELETE",
